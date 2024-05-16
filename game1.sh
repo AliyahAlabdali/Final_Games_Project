@@ -1,4 +1,3 @@
-  GNU nano 7.2                                                                                                                    game.sh                                                                                                                             
 #!/bin/bash
 
 # Function to ask a question using expr for calculations
