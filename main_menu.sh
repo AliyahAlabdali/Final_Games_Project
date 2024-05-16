@@ -13,7 +13,7 @@ while true; do
 
     case $choice in
         1)
-            ./game.sh
+            ./game1.sh
             ;;
         2)
             ./game2.sh
