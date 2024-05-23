@@ -1,3 +1,4 @@
+                                                                                                                                                                       
 #!/bin/bash
 
 # Function to ask a question using expr for calculations
@@ -55,4 +56,10 @@ done
 # Score output using expr and awk for final message
 echo "Quiz complete. You answered $score out of $question_count correctly." | awk '{print $0}'
 echo "Thank you for playing!" | awk '{print $0}'
+
+
+
+
+
+
 
