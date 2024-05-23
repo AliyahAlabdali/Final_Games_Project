@@ -1,7 +1,7 @@
 #!/bin/bash
 
 tput setaf 5
-echo "Welcome to the Multi_game challenge!"
+echo "Welcome to Shell Play!"
 tput sgr0
 
 while true; do
