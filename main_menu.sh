@@ -1,6 +1,8 @@
 #!/bin/bash
 
-echo "Welcome to the CLI Game Hub!"
+tput setaf 5
+echo "Welcome to the Multi_game challenge!"
+tput sgr0
 
 while true; do
     echo "Please choose a game:"
