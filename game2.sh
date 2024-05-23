@@ -1,4 +1,4 @@
-!/bin/bash
+#!/bin/bash
 
 scorefile="highscores_bash"
 play_again="yes"
@@ -6,11 +6,16 @@ quit_game="no"
 
 echo "Random number guesser!"
 
+total_score=0  # Move total_score initialization outside the loop
+
 while [ "$play_again" = "yes" ] && [ "$quit_game" = "no" ]; do
     num_guesses=0
-    total_score=0
 
-    random_number=$((RANDOM % 10))  # Change the range to 0-9
+   # Seed the random number generator
+  RANDOM=$(( $(date +%s%N) % 32768 ))  
+    # Generate random number
+    random_number=$((RANDOM % 10))
+
 
     while true; do
         read -p "What is the random number you would like to guess? Please pick a number between 0 and 9 (or enter 'q' to quit): " user_guess
@@ -18,7 +23,7 @@ while [ "$play_again" = "yes" ] && [ "$quit_game" = "no" ]; do
         if [ "$user_guess" = "q" ]; then
             quit_game="yes"
             break
-        elif [ "$user_guess" -ge 0 ] && [ "$user_guess" -le 9 ]; then  # Adjust the range check
+        elif [[ "$user_guess" =~ ^[0-9]$ ]]; then
             num_guesses=$((num_guesses + 1))
 
             if [ "$user_guess" -eq "$random_number" ]; then
@@ -43,10 +48,8 @@ while [ "$play_again" = "yes" ] && [ "$quit_game" = "no" ]; do
     fi
 done
 
-if [ "$quit_game" != "yes" ]; then
-    read -p "Please enter your name: " name
-    echo "$name $total_score" >> "$scorefile"
-fi
+read -p "Please enter your name: " name
+echo "$name $total_score" >> "$scorefile"
 
-echo -e "\nPrevious high scores:"
+printf "\nPrevious high scores:\n"
 cat "$scorefile"
