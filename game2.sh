@@ -4,7 +4,9 @@ scorefile="highscores_bash"
 play_again="yes"
 quit_game="no"
 
+tput setaf 5
 echo "Random number guesser!"
+tput setaf 5
 
 total_score=0  # Move total_score initialization outside the loop
 
@@ -18,7 +20,9 @@ while [ "$play_again" = "yes" ] && [ "$quit_game" = "no" ]; do
 
 
     while true; do
+        tput setaf 6
         read -p "What is the random number you would like to guess? Please pick a number between 0 and 9 (or enter 'q' to quit): " user_guess
+        tput sgr0
 
         if [ "$user_guess" = "q" ]; then
             quit_game="yes"
@@ -27,12 +31,16 @@ while [ "$play_again" = "yes" ] && [ "$quit_game" = "no" ]; do
             num_guesses=$((num_guesses + 1))
 
             if [ "$user_guess" -eq "$random_number" ]; then
+                tput setaf 2
                 echo "You guessed right! Congratulations, $random_number is equal to $user_guess"
+                tput sgr0
                 total_score=$((total_score + 1))
                 break
             else
+                tput setaf 1
                 echo "You guessed wrong! Try again."
-            fi
+                tput sgr0 
+           fi
         else
             echo "Invalid input. Please enter a number between 0 and 9 or 'q' to quit."
         fi
