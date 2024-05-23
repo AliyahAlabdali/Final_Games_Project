@@ -12,7 +12,7 @@ while [ "$play_again" = "yes" ] && [ "$quit_game" = "no" ]; do
     num_guesses=0
 
    # Seed the random number generator
-  RANDOM=$(( $(date +%s%N) % 32768 ))  
+  RANDOM=$(( $(date +%s%N) % 32768 ))
     # Generate random number
     random_number=$((RANDOM % 10))
 
