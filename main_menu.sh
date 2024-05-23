@@ -28,7 +28,9 @@ while true; do
             exit 0
             ;;
         *)
+            tput setaf 1
             echo "Invalid choice. Please enter a number between 1 and 4."
+            tput sgr0
             continue
             ;;
     esac
