@@ -25,20 +25,26 @@ echo "Welcome to Shell Play!"
 tput sgr0
 
 while true; do
+    echo ""
     echo "Please choose a game:"
     echo "1. General Knowledge Game"
     echo "2. Numbers Guesser Game"
     echo "3. Rock, Paper, Scissors Game"
     echo "4. Quit"
 
-    read -p "Enter your choice: " choice
+    while true; do
+        read -p "Enter your choice: " choice
+        case $choice in
+            [1-4]) break ;;
+            *) display_error "Invalid choice. Please enter a number between 1 and 4." ;;
+        esac
+    done
 
     case $choice in
         1) ./game1.sh ;;
         2) ./game2.sh ;;
         3) ./game3.sh ;;
         4) echo "Goodbye!"; exit 0 ;;
-        *) display_error "Invalid choice. Please enter a number between 1 and 4.";;
     esac
 
     # Prompt user to play again
@@ -47,6 +53,4 @@ while true; do
         break
     done
 done
-
-
 
